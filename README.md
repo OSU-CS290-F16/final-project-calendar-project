@@ -1,4 +1,4 @@
-﻿# final-project-calendar-project
+﻿# Final Project-Calendar/Class Schedule
 
 Group members: Nehemiah Edwards(edwardne), Markus Woltjer(woltjerm), James Stallkamp(stallkaj)
 
