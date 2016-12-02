@@ -1,116 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css" media="screen">
-    <base href="http://demos.telerik.com/kendo-ui/calendar/events">
-    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
+	<head>
+		<title>Calendar/Class Schedule Application</title>
 
-    <title>Calendar/Class Schedule Application</title>
+		<!-- Stylesheets-->
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.custom.css" />
+		<link rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.miniColors.css" />
+    <link rel="stylesheet" href="css/style.css" media="screen">
+  </head>
+	<body>
+		<header>
+			<h1><a href=""> Calendar/Class Schedule Application</a></h1>
+		</header>
 
-    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-material.min.css" />
-    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.min.css" />
-    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.mobile.min.css" />
+		<div id="content_wrapper">
 
-    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
-    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
-    <link rel="stylesheet" href="../content/shared/styles/examples-offline.css">
-    <script src="../content/shared/js/console.js"></script>
-</head>
-<body>
-  <header>
+			<div id="calendar">
+			</div>
 
-    <h1><a href="/"> Calendar/Class Schedule Application</a></h1>
+			<div id="event_generation_wrapper">
+        <!-- Color Selection Labels-->
+        <div class='left'>
+					<div class='text'>Background:</div><br />
+					<div class='text'>Border:</div><br />
+					<div class='text'>Text:</div><br />
+				</div>
+        <!-- Color Selection Area-->
+				<div class='right'>
+					<input id="txt_background_color" type='hidden' class='color_picker' value='#2795C3' /><br />
+					<input id="txt_border_color" type='hidden' class='color_picker' value='#6AB3D3' /><br />
+					<input id="txt_text_color" type='hidden' class='color_picker' value='#ffffff' /><br />
+				</div>
+        <!-- Event Creation Area-->
+				<input id='txt_title' type='text' value='Event Title' /><br />
+				<textarea id='txt_description'>Description</textarea><br />
 
-    <nav>
-      <ul class="navbar-list">
-        <li class="navbar-item"><a href="/">Calendar view</a></li>
-        <li class="navbar-item"><a href="/about">Schedule view</a></li>
-        <li class="navbar-item navbar-right"><a href="#">Reset</a></li>
-      </ul>
-    </nav>
+				<input id="btn_gen_event" type="button" value="New Event" class='btn' />
+				<input id="btn_update_event" type="button" value="Update Event" class='btn'/>
+				<input id="txt_current_event" type="hidden" value="" />
+			</div>
 
-  </header>
-        <div id="example">
-            <div class="demo-section k-content" style="text-align: center;">
-                <h3>Select a date and then add an event</h3>
-                <div id="calendar"></div>
-                <form action="" style="text-align: left;">
-                  <input type="radio" name="event-type" value="midterm" > <label for="midterm-text" style="color: #00a1e8;">Add Midterm</label><br>
-                  <input type="radio" name="event-type" value="final"><label for="final-text" style="color: #ff4040;"> Add Final</label><br>
-                  <input type="radio" name="event-type" value="holiday"><label for="holiday-text" style="color: #ff9e00;"> Add Holiday</label><br>
-                  <br><input type="submit" name="submit" value="Submit Event">
+			<div id='external_events'>
+				<div id='external_event_template' class='external-event ui-draggable'>One Hour</div>
+			</div>
+		</div>
 
-                </form>
-            </div>
-            <div class="box" style="text-align: center;">
-                <h4>Selected Dates</h4>
-                <div class="console"></div>
-            </div>
-
-            <script>
-            $(document).ready(function() {
-                var current = new Date(),
-                    events = [
-                       +new Date(current.getFullYear(), current.getMonth(), 1),
-                       +new Date(current.getFullYear(), current.getMonth(), 14),
-                       +new Date(current.getFullYear(), current.getMonth(), 27),
-                       +new Date(current.getFullYear(), current.getMonth() + 1, 9),
-                       +new Date(current.getFullYear(), current.getMonth() + 1, 12),
-                       +new Date(current.getFullYear(), current.getMonth() + 1, 25),
-                       +new Date(current.getFullYear(), current.getMonth() + 1, 26),
-                       +new Date(current.getFullYear(), current.getMonth() - 1, 2),
-                       +new Date(current.getFullYear(), current.getMonth() - 1, 7),
-                       +new Date(current.getFullYear(), current.getMonth() - 2, 3),
-                       +new Date(current.getFullYear(), current.getMonth() - 2, 27)
-                    ];
-                    function onChange() {
-                        kendoConsole.log("Selected Date :: " + kendo.toString(this.value(), 'd'));
-
-                    }
-
-                $("#calendar").kendoCalendar({
-                    value: current,//value starts at current day
-                    dates: events,
-                    change: onChange,
-                    min: new Date(2009, 0, 1),//0 is January
-                    max: new Date(2020, 11, 31),//11 is December
-                    month: {
-                        // template for events in month view
-                        content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
-                                    '<div class="' +
-                                       '# if (data.value < 10) { #' +
-                                           "holiday" +
-                                       '# } else if ( data.value < 20 ) { #' +
-                                           "midterm" +
-                                       '# } else { #' +
-                                           "final" +
-                                       '# } #' +
-                                    '">#= data.value #</div>' +
-                                 '# } else { #' +
-                                 '#= data.value #' +
-                                 '# } #',
-                    },
-                });
-            });
-            </script>
-            <style>
-                /* Template Events */
-                .holiday,
-                .midterm,
-                .final {
-                    font-weight: bold;
-                }
-                .holiday {
-                    color: #ff9e00;
-                }
-                .midterm {
-                    color: #00a1e8;
-                }
-                .final {
-                    color: #ff4040;
-                }
-            </style>
-        </div>
-</body>
+		<!-- Include scripts at bottom to aid dom loading and prevent hangs -->
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+		<script type='text/javascript' src='js/jquery-ui-1.9.2.custom.min.js'></script>
+		<script type='text/javascript' src='js/fullcalendar.js'></script>
+		<script type='text/javascript' src='js/view_calendar.js'></script>
+		<script type='text/javascript' src='js/jquery.miniColors.js'></script>
+	</body>
 </html>
