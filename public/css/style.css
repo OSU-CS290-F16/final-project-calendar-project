@@ -14,7 +14,6 @@ header {
 }
 
 header h1 {
-
   text-align: center;
   color: #535ae0;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -57,7 +56,7 @@ body{
 }
 
 .btn{
-	font-size: 85%
+	font-size: 85%;
 	margin-top: 10px;
 }
 
@@ -105,7 +104,6 @@ body{
 	line-height: 10px;
 }
 
-
 #external_events{
 	float: left;
 	width: 130px;
@@ -142,8 +140,11 @@ body{
 #calendar .fc-header-title{
 	font-weight: normal;
   font-size: 18px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 #external_event_template{
 	display: none;
 }
+
