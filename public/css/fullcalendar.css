@@ -293,11 +293,22 @@ a.fc-event {
 	overflow: hidden;
 	}
 	
-.fc-event-time,
 .fc-event-title {
-	padding: 0 1px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+	padding-left: 1px;
+	padding-right: 1px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1pt;
+	position: relative;
+	background-color: #54CD7C;
 	}
 	
+.fc-event-time, .fc-event-description {
+	padding: 0 1px;
+	}
+
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
 	display: block;
 	position: absolute;
