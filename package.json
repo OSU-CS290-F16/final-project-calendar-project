@@ -1,0 +1,26 @@
+{
+  "name": "final-project-calendar-project",
+  "version": "1.0.0",
+  "description": "School Calendar/Planner",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "handlebars views/partials/todo.handlebars -f public/todo-template.js",
+    "prestart": "npm run build",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSU-CS290-F16/final-project-calendar-project.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/OSU-CS290-F16/final-project-calendar-project/issues"
+  },
+  "homepage": "https://github.com/OSU-CS290-F16/final-project-calendar-project#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0"
+  }
+}
