@@ -251,7 +251,7 @@ function initialise_update_event(){
 		//close modal
 		});
 	}
-//
+
 	function deny_remove(){
 	$('#btn_yes').bind('click', function(){
 		//close modal;
