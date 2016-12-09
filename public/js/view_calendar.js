@@ -8,8 +8,8 @@ $(document).ready(function(){
 	initialise_update_event();
 	initialise_remove_event();
 	initialise_remove_all_events();
-	open_modal();
-	close_modal();
+	confirm_remove();
+	deny_remove();
 });
 
 /* Initialise buttons */
@@ -240,23 +240,21 @@ function initialise_update_event(){
 	}
 
 	function initialise_remove_all_events(){
-	$('#yes_button').bind('click', function(){
-		//remove all events from the calendar
-		$('#calendar').fullCalendar('removeEvents');
-		var confirmation-selection = document.getElementById('confirmation-selection');
-		confirmation-selection.style.display = "none";
-		});
-
-	function open_modal(){
 	$('#btn_remove_all_elements').bind('click', function(){
-		var confirmation-selection = document.getElementById('confirmation-selection');
-		confirmation-selection.style.display = "block";
+		//display modal (id is confirmation-selection)
 		});
+	}
 
-	function close_modal(){
-	$('#no_button').bind('click', function(){
-		var confirmation-selection = document.getElementById('confirmation-selection');
-		confirmation-selection.style.display = "none";
+	function confirm_remove(){
+	$('#btn_yes').bind('click', function(){
+		$('#calendar').fullCalendar('removeEvents');
+		//close modal
+		});
+	}
+//
+	function deny_remove(){
+	$('#btn_yes').bind('click', function(){
+		//close modal;
 		});
 
 	}

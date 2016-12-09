@@ -117,8 +117,8 @@ html .fc,
 	overflow: hidden;
 	}
 	
-.confirmation{
-	display: none;
+.confirmation{/*modal for confirming the deletion of all events... probably a good idea*/
+	display: block;
 	position: relative;
 	bottom: 45%;
 	left: 35%;
