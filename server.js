@@ -4,7 +4,7 @@ var staticDir = path.join(__dirname, 'public');
 var index = 'index.html';
 var notFound = '404.html';
 var style = 'style.css';
-var js = 'js/view_calendar.js';//not sure about pathing here
+//var js = 'index.js';
 var port = process.env.PORT || 3000;
 
 var http = require("http");
@@ -16,7 +16,7 @@ console.log("staticDir:", staticDir);
 cache[index] = fs.readFileSync(path.join(staticDir, '/index.html'));
 cache[notFound] = fs.readFileSync(path.join(staticDir, '/404.html'));
 cache[style] = fs.readFileSync(path.join(staticDir, '/style.css'));
-cache[js] = fs.readFileSync(path.join(staticDir, '/js/view_calendar.js'));//more sure about pathing here
+//cache[js] = fs.readFileSync(path.join(staticDir, '/index.js'));
 
 var server = http.createServer(function(req, res){
 
@@ -40,10 +40,10 @@ var server = http.createServer(function(req, res){
 			{
 				res.write(cache[notFound]);
 			}
-			if(url==js)
-			{
-				res.write(cache[js]);
-			}
+			//if(url==js)
+			//{
+			//	res.write(cache[js]);
+			//}
 			res.end();
 	}
 	else
