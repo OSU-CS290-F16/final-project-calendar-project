@@ -8,6 +8,8 @@ $(document).ready(function(){
 	initialise_update_event();
 	initialise_remove_event();
 	initialise_remove_all_events();
+	open_modal();
+	close_modal();
 });
 
 /* Initialise buttons */
@@ -236,11 +238,26 @@ function initialise_update_event(){
 	 		}
 		});
 	}
+
 	function initialise_remove_all_events(){
-	$('#btn_remove_all_events').bind('click', function(){
+	$('#yes_button').bind('click', function(){
 		//remove all events from the calendar
 		$('#calendar').fullCalendar('removeEvents');
+		var confirmation-selection = document.getElementById('confirmation-selection');
+		confirmation-selection.style.display = "none";
+		});
 
-	});
-}
+	function open_modal(){
+	$('#btn_remove_all_elements').bind('click', function(){
+		var confirmation-selection = document.getElementById('confirmation-selection');
+		confirmation-selection.style.display = "block";
+		});
+
+	function close_modal(){
+	$('#no_button').bind('click', function(){
+		var confirmation-selection = document.getElementById('confirmation-selection');
+		confirmation-selection.style.display = "none";
+		});
+
+	}
 

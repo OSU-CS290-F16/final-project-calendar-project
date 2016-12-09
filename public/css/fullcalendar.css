@@ -117,7 +117,26 @@ html .fc,
 	overflow: hidden;
 	}
 	
-	
+.confirmation{
+	display: none;
+	position: relative;
+	bottom: 45%;
+	left: 35%;
+	background-color: #D0D9D3;
+	color: black;
+	border: solid;
+	border-width: 1pt;
+	border-color: red;
+	border-radius: 15px;
+	padding: 8px;
+	width: 30%;
+	z-index: -1;
+}
+
+.confirmation ul li {
+	display: inline;
+	margin: 40pt;
+}
 
 /* Cell Styles
 ------------------------------------------------------------------------*/
