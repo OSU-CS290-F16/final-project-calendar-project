@@ -8,8 +8,11 @@ $(document).ready(function(){
 	initialise_update_event();
 	initialise_remove_event();
 	initialise_remove_all_events();
-	confirm_remove();
-	deny_remove();
+
+	//created a modal to confirm the removal of all events, but didn't end up finding the bug in time, focused on other priorities
+
+	//confirm_remove();
+	//deny_remove();	
 });
 
 /* Initialise buttons */
@@ -238,10 +241,19 @@ function initialise_update_event(){
 	 		}
 		});
 	}
-
 	function initialise_remove_all_events(){
+	$('#btn_remove_all_events').bind('click', function(){
+		//remove all events from the calendar
+		$('#calendar').fullCalendar('removeEvents');
+
+	});
+}
+/*
+function initialise_remove_all_events(){
 	$('#btn_remove_all_elements').bind('click', function(){
-		//display modal (id is confirmation-selection)
+		//console.log("click on remove all");
+		$('#calendar').fullCalendar('removeEvents');
+		fc-confirmation.style.display = "block";
 		});
 	}
 
@@ -249,14 +261,13 @@ function initialise_update_event(){
 	$('#btn_yes').bind('click', function(){
 		console.log("yes clicked");
 		$('#calendar').fullCalendar('removeEvents');
-		//close modal
+		fc-confirmation.style.display = "none";
 		});
 	}
 
 	function deny_remove(){
 	$('#btn_yes').bind('click', function(){
-		//close modal;
+		console.log("no clicked");
+		fc-confirmation.style.display = "none";
 		});
-
-	}
-
+	}*/

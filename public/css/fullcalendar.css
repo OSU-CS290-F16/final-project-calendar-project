@@ -118,7 +118,7 @@ html .fc,
 	}
 	
 .fc-confirmation{/*modal for confirming the deletion of all events... probably a good idea*/
-	display: block;
+	display: none;/*block; if the modal was functional... I believe the error could be due to it not being in fc-buttons or some other template thing*/
 	position: relative;
 	bottom: 45%;
 	left: 35%;
