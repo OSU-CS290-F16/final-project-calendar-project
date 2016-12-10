@@ -247,6 +247,7 @@ function initialise_update_event(){
 
 	function confirm_remove(){
 	$('#btn_yes').bind('click', function(){
+		console.log("yes clicked");
 		$('#calendar').fullCalendar('removeEvents');
 		//close modal
 		});
